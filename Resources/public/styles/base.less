@@ -1,0 +1,262 @@
+//=====
+//==settings
+//=====/
+
+//--
+//=colors
+//--
+
+//--
+//=fonts
+//--
+@fontstackHelvetica: "Helvetica Neue", Arial, Helvetica, sans-serif;
+@fontstackTimes: "Times", serif;
+
+//=====
+//==mixins
+//=====/
+
+//--
+//=units
+//--
+.font-size(@integer){ //-set font size to px for old browsers, rem for new browsers
+	font-size: ~`@{integer}+"px"`;
+	font-size: ~`@{integer}+"rem"`;
+	}
+
+//--
+//=vendor prefixes
+//--
+.box-align(@setting: center){
+	-moz-box-align: @setting;
+	-webkit-box-align: @setting;
+	box-align: @setting;
+	}
+.box-flex(@setting: 0){
+	-moz-box-flex: @setting;
+	-webkit-box-flex: @setting;
+	box-flex: @setting;
+	}
+.box-ordinal-group(@setting: 1){
+	-moz-box-ordinal-group: @setting;
+	-webkit-box-ordinal-group: @setting;
+	box-ordinal-group: @setting;
+	}
+.box-orient(@setting: horizontal){
+	-moz-box-orient: @setting;
+	-webkit-box-orient: @setting;
+	box-orient: @setting;
+	}
+.box-pack(@setting: center){
+	-moz-box-pack: @setting;
+	-webkit-box-pack: @setting;
+	box-pack: @setting;
+	}
+.box-sizing(@setting: border-box){
+	-moz-box-sizing: @setting;
+	-webkit-box-sizing: @setting;
+	box-sizing: @setting
+	}
+.display-box{
+	display: -moz-box;
+	display: -webkit-box;
+	display: box;
+	}
+.text-size-adjust(@value: 100%){ //-on mobile devices, prevent text from auto resize on orientation change
+	-webkit-text-size-adjust: @value;
+	-ms-text-size-adjust: @value;
+	}
+
+
+//=====
+//==base
+//=====/
+
+//--
+//=containers
+//--
+html{
+	.box-sizing; //-use box model that includes padding and border
+	margin: 0;
+	padding: 0;
+	font-size: 6.25%; //-make em/rem equal px in normal browsers
+	font-family: @fontstackTimes;
+	.text-size-adjust;
+	}
+body
+,th
+,td
+	{
+	margin: 0;
+	padding: 0;
+	line-height: 1.4;
+	.font-size(14);
+	}
+article
+,aside
+,details
+,figcaption
+,figure
+,footer
+,header
+,hgroup
+,nav
+,section 
+	{
+	display: block;
+	}
+table{
+	border-collapse: collapse;
+	border-spacing: 0;
+	}
+table, tr, td{
+	margin: 0;
+	padding: 0;
+	}
+
+//--
+//=text structures
+//--
+a{
+	margin: 0;
+	}
+h1
+,h2
+,h3
+,h4
+,h5
+,h6
+	{
+	margin: 0 0 15px 0;
+	padding: 0;
+	}
+h1 a
+,h2 a
+,h3 a
+,h4 a
+,h5 a
+,h6 a
+	{
+	color: inherit;
+	}
+p{
+	margin: 0 0 15px 0;
+	padding: 0;
+}
+ul.plain
+,ol.plain
+	{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	}
+
+//--
+//=media
+//--
+audio
+,canvas
+,video
+	{
+	display: inline;
+	display: inline-block;
+	zoom: 1;
+	}
+audio:not([control]){
+	display: none; //-hide controllless audio elements
+	}
+iframe{
+	border: 0;
+	}
+img{
+	border: 0; //-no borders, especially on hover
+	vertical-align: middle;
+	-ms-interpolation-mode: bicubic; //-fix resizing in IE7
+	}
+
+
+//=====
+//==reusable classes
+//=====/
+
+//--
+//=accessibility
+//--
+.listlinksjump a{
+	.screenreaderonly;
+	}
+.linkjump{
+	.screenreaderonly;
+	}
+.linkjump:active
+,.linkjump:focus
+,.linkjump:hover
+	{
+	display: inline;
+	display: inline-block;
+	position: static;
+	z-index: 9999;
+	}
+.screenreaderonly{
+	display: inline;
+	position: absolute;
+	top: -9000px;
+	left: -9000px;
+	font-size: 0;
+	}
+
+//--
+//=positioning
+//--
+.clear{
+	clear: both;
+	}
+.clearafter{ //-clear all floats after div
+	zoom: 1; //-for UA IE 7 and below
+	}
+.clearafter:after{
+	display: block;
+	clear: both;
+	height: 0;
+	content: " ";
+	}
+.floatright{
+	float: right;
+	}
+.floatleft{
+	float: left;
+	}
+
+//=====
+//==structure
+//=====/
+
+body{
+	margin: auto; //-center on older browsers
+	}
+
+//--
+//=columns
+//--
+.ua-old .columns.equalheight{ //-make columns equal height in older browsers
+	overflow: hidden;
+	}
+.ua-new .columns{
+	.display-box;
+	}
+.ua-old .columns.equalheight .column{
+	float: left;
+	margin-bottom: -32000px;
+	padding: 0 10px 32000px;
+	}
+.ua-new .columns .column{
+	.box-flex(1);
+	}
+.ua-old .columns.equalheight .column.c-first{
+	border-left: none;
+	padding-left: 0;
+	}
+.ua-old .columns.equalheight .column.c-last{
+	padding-right: 0;
+	}
+

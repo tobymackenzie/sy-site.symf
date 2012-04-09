@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>{% block pageTitle %}Welcome!{% endblock %}</title>
+{% block pageStylesheets %}
+{%	stylesheets filter='less,yui_css' '@TJMBaseBundle/Resources/public/styles/*' %}
+		<link href="{{ asset_url }}" rel="stylesheet" />
+{%	endstylesheets %}
+{% endblock %}
+{% block pageJavascriptsPreLoad %}{% endblock %}
+		<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+	</head>
+	<body>
+		{% block pageBody %}{% endblock %}
+		{% block pageJavascriptsPostLoad %}{% endblock %}
+	</body>
+</html>
+

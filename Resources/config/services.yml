@@ -1,0 +1,7 @@
+parameters:
+# tjm_page.example.class: TJM\Bundle\BaseBundle\Example
+
+services:
+# tjm_page.example:
+#  class: %tjm_page.example.class%
+#  arguments: [@service_id, "plain_value", %parameter%]
