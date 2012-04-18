@@ -9,8 +9,6 @@
 //--
 //=fonts
 //--
-@fontstackHelvetica: "Helvetica Neue", Arial, Helvetica, sans-serif;
-@fontstackTimes: "Times", serif;
 
 //=====
 //==mixins
@@ -19,53 +17,11 @@
 //--
 //=units
 //--
-.font-size(@integer){ //-set font size to px for old browsers, rem for new browsers
-	font-size: ~`@{integer}+"px"`;
-	font-size: ~`@{integer}+"rem"`;
-	}
+
 
 //--
 //=vendor prefixes
 //--
-.box-align(@setting: center){
-	-moz-box-align: @setting;
-	-webkit-box-align: @setting;
-	box-align: @setting;
-	}
-.box-flex(@setting: 0){
-	-moz-box-flex: @setting;
-	-webkit-box-flex: @setting;
-	box-flex: @setting;
-	}
-.box-ordinal-group(@setting: 1){
-	-moz-box-ordinal-group: @setting;
-	-webkit-box-ordinal-group: @setting;
-	box-ordinal-group: @setting;
-	}
-.box-orient(@setting: horizontal){
-	-moz-box-orient: @setting;
-	-webkit-box-orient: @setting;
-	box-orient: @setting;
-	}
-.box-pack(@setting: center){
-	-moz-box-pack: @setting;
-	-webkit-box-pack: @setting;
-	box-pack: @setting;
-	}
-.box-sizing(@setting: border-box){
-	-moz-box-sizing: @setting;
-	-webkit-box-sizing: @setting;
-	box-sizing: @setting
-	}
-.display-box{
-	display: -moz-box;
-	display: -webkit-box;
-	display: box;
-	}
-.text-size-adjust(@value: 100%){ //-on mobile devices, prevent text from auto resize on orientation change
-	-webkit-text-size-adjust: @value;
-	-ms-text-size-adjust: @value;
-	}
 
 
 //=====

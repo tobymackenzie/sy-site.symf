@@ -1,0 +1,24 @@
+//=====
+//==settings
+//=====/
+
+//--
+//=fonts
+//--
+
+@fontstackHelvetica: "Helvetica Neue", Arial, Helvetica, sans-serif;
+@fontstackTimes: "Times", serif;
+
+
+//=====
+//==mixins
+//=====/
+
+//--
+//=units
+//--
+.font-size(@integer){ //-set font size to px for old browsers, rem for new browsers
+	font-size: ~`@{integer}+"px"`;
+	font-size: ~`@{integer}+"rem"`;
+	}
+

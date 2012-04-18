@@ -4,7 +4,7 @@
 		<meta charset="utf-8" />
 		<title>{% block pageTitle %}Welcome!{% endblock %}</title>
 {% block pageStylesheets %}
-{%	stylesheets filter='less,yui_css' '@TJMBaseBundle/Resources/public/styles/*' %}
+{%	stylesheets filter='less' '@TJMBaseBundle/Resources/public/styles/loaders/all.less' %}
 		<link href="{{ asset_url }}" rel="stylesheet" />
 {%	endstylesheets %}
 {% endblock %}
