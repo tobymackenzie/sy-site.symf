@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html>
+{% block pageDoctype %}<!DOCTYPE html>{% endblock %}
+<html class="no-js{% block pageClasses %}{% endblock %}" lang="{% block pageLanguage %}en{% endblock %}">
 	<head>
 		<meta charset="utf-8" />
 		<title>{% block pageTitle %}Welcome!{% endblock %}</title>
-{% block pageStylesheets %}
-{%	stylesheets filter='less' '@TJMBaseBundle/Resources/public/styles/loaders/all.less' %}
-		<link href="{{ asset_url }}" rel="stylesheet" />
-{%	endstylesheets %}
-{% endblock %}
-{% block pageJavascriptsPreLoad %}{% endblock %}
-		<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+{% block pageMeta %}{% endblock %}
+{% block pageStyles %}{% endblock %}
+{% block pageScriptsPreLoad %}{% endblock %}
 	</head>
 	<body>
-		{% block pageBody %}{% endblock %}
-		{% block pageJavascriptsPostLoad %}{% endblock %}
+{% block pageBody %}{% endblock %}
+{% block pageScriptsPostLoad %}{% endblock %}
 	</body>
 </html>
 

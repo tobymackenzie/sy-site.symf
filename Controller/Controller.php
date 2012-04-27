@@ -7,7 +7,7 @@ class Controller extends BaseController{
 	/*==
 	provide easy access to services
 	==*/
-	public function __get($name) {
+	public function __get($name){
 		return $this->get($name);
 	}
 	/*=====

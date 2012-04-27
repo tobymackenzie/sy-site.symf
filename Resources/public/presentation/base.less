@@ -169,12 +169,12 @@ img{
 	}
 .clearafter{ //-clear all floats after div
 	zoom: 1; //-for UA IE 7 and below
-	}
-.clearafter:after{
-	display: block;
-	clear: both;
-	height: 0;
-	content: " ";
+	&:after{
+		display: block;
+		clear: both;
+		height: 0;
+		content: " ";
+		}
 	}
 .floatright{
 	float: right;
@@ -188,6 +188,7 @@ img{
 //=====/
 
 body{
+	.clearafter;
 	margin: auto; //-center on older browsers
 	}
 
