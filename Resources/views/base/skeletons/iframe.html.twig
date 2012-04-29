@@ -1,0 +1,13 @@
+{% extends 'TJMBaseBundle:base:skeletons/base.html.twig' %}
+
+{% block pageBody %}
+<div class="wrappage">
+{%	block pageMain %}
+	<div id="pagemain" class="wrappagemain" role="main">
+		<div class="pagemain">
+			{% block pageMainContent %}{% endblock %}
+		</div>
+	</div>
+{%	endblock %}
+</div>
+{% endblock %}

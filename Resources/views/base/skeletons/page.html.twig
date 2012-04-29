@@ -1,0 +1,54 @@
+{% extends 'TJMBaseBundle:base:skeletons/base.html.twig' %}
+
+{% block pageMeta %}
+{# tell mobile devices this site is designed for them #}
+<meta name="viewport" content="width=device-width" />
+<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+{% endblock %}
+
+{% block pageStylesheets %}
+{%	stylesheets filter='less,?yui_css' '@TJMBaseBundle/Resources/public/presentation/loaders/all.less' %}
+<link href="{{ asset_url }}" rel="stylesheet" />
+{%	endstylesheets %}
+{% endblock %}
+
+{% block pageBody %}
+<div class="wrappage">
+{%	block pageHeader %}
+	<div id="pageheader" class="wrappageheader" role="banner">
+		<header class="pageheader">
+{%		block pageHeaderContent %}
+			<div class="pagejumpto jumpto">
+				<a href="#pagenavigation">Jump to site navigation</a>
+			</div>
+{%		endblock %}
+		</header>
+	</div>
+{%	endblock %}
+{%	block pageMain %}
+	<div id="pagemain" class="wrappagemain" role="main">
+		<div class="pagemain">
+			{% block pageMainContent %}{% endblock %}
+		</div>
+	</div>
+{%	endblock %}
+{%	block pageNavigation %}
+	<div id="pagenavigation" class="wrappagenavigation">
+		<nav class="pagenavigation" role="navigation">
+{%		block pageNavigationContent %}
+			<h2>Site Navigation</h2>
+{%		endblock %}
+		</nav>
+	</div>
+{%	endblock %}
+{%	block pageFooter %}
+	<div id="pagefooter" class="wrappagefooter" role="contentinfo">
+		<footer class="pagefooter">
+{%		block pageFooterContent %}
+			<h2>Site Footer</h2>
+{%		endblock %}
+		</footer>
+	</div>
+{%	endblock %}
+</div>
+{% endblock %}

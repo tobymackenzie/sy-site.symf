@@ -16,11 +16,20 @@ class Configuration implements ConfigurationInterface{
 	public function getConfigTreeBuilder(){
 		$treeBuilder = new TreeBuilder();
 		$rootNode = $treeBuilder->root('tjm_base');
-
-		// Here you should define the parameters that are allowed to
-		// configure your bundle. See the documentation linked above for
-		// more information on that topic.
-
+		$rootNode
+			->children()
+				->arrayNode('page_skeletons')
+//-! must be 2.1 thing				->setInfo('set templates for renderPage')
+					->addDefaultsIfNotSet()
+					->useAttributeAsKey("node")
+					->beforeNormalization()
+						->ifTrue(function($value){ return !is_array($value); })
+						->then(function($value){ return Array($value); })
+					->end()
+					->prototype('scalar')->end()
+				->end()
+			->end()
+		;
 		return $treeBuilder;
 	}
 }

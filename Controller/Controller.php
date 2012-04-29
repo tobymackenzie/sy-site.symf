@@ -17,22 +17,25 @@ class Controller extends BaseController{
 	allow adding custom functionality to rendering of pages (on override)
 	==*/
 	public function renderPage($view, array $parameters = array(), Response $response = null){
+		$skeletons = $this->container->getParameter('tjm_base.skeletons');
+		if(!array_key_exists("page", $parameters)){
+			$parameters["page"] = Array();
+		}
+		if(!array_key_exists("skeleton", $parameters["page"])){
+			if($this->request->isXmlHttpRequest()){
+				$parameters["page"]["skeleton"] = $skeletons["ajax"];
+			}else{
+				foreach($skeletons as $name=>$skeleton){
+					if(array_key_exists("is{$name}", $_REQUEST)){
+						$parameters["page"]["skeleton"] = $skeleton;
+					}
+				}
+			}
+			if(!array_key_exists("skeleton", $parameters["page"])){
+				$parameters["page"]["skeleton"] = $skeletons["page"];
+			}
+		}
 		$response = $this->render($view, $parameters, $response);
-		return $response;
-	}
-	/*==
-	render template into a skeleton
-	==*/
-	public function renderSkeletonPage($template, $data = Array(), $options = Array()){
-		$options = array_merge(Array(
-			"template"=> $template
-			,"skeleton"=> "TJMBaseBundle:base:skeleton/base.html.php"
-			,"skeletonAjax"=> "TJMBaseBundle:base:skeleton/ajax.html.php"
-			,"loader"=> "TJMBaseBundle:Default:skeletonLoader.html.php"
-		), $options);
-		$data["loaderOptions"] = $options;
-		$response = $this->renderPage($options["loader"], $data);
-//		$response->headers->set("Content-Type", "text/html");
 		return $response;
 	}
 }
