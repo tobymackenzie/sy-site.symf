@@ -1,8 +1,0 @@
-tjmBaseHome:
- pattern:  /hello/{name}
- defaults: { _controller: TJMBaseBundle:Default:index }
-
-tjmBasePage:
- resource: "@TJMBaseBundle/Resources/config/routing/page.yml"
- prefix:   /page
-
