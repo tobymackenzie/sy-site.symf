@@ -19,15 +19,15 @@ class TJMBaseExtension extends Extension{
 		$configuration = new Configuration();
 		$config = $this->processConfiguration($configuration, $configs);
 //var_dump($configs);die();
-		$pageSkeletons = Array(
-			"ajax"=> "TJMBaseBundle:base:skeletons/ajax.html.twig"
-			,"iframe"=> "TJMBaseBundle:base:skeletons/iframe.html.twig"
-			,"page"=> "TJMBaseBundle:base:skeletons/page.html.twig"
+		$pageWraps = Array(
+			"bare"=> "TJMBaseBundle:base:skeletons/bare.html.twig"
+			,"simple"=> "TJMBaseBundle:base:skeletons/simple.html.twig"
+			,"full"=> "TJMBaseBundle:base:skeletons/full.html.twig"
 		);
-		if(array_key_exists("page_skeletons", $config)){
-			$pageSkeletons = array_merge($pageSkeletons, $config["page_skeletons"]);
+		if(array_key_exists("page_wraps", $config)){
+			$pageWraps = array_merge($pageWraps, $config["page_wraps"]);
 		}
-		$container->setParameter("tjm_base.skeletons", $pageSkeletons);
+		$container->setParameter("tjm_base.wraps", $pageWraps);
 		// $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 		// $loader->load('services.yml');
 	}

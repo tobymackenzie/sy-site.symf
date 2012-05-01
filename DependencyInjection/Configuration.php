@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface{
 		$rootNode = $treeBuilder->root('tjm_base');
 		$rootNode
 			->children()
-				->arrayNode('page_skeletons')
+				->arrayNode('page_wraps')
 //-! must be 2.1 thing				->setInfo('set templates for renderPage')
 					->addDefaultsIfNotSet()
 					->useAttributeAsKey("node")

@@ -17,24 +17,36 @@ class Controller extends BaseController{
 	allow adding custom functionality to rendering of pages (on override)
 	==*/
 	public function renderPage($view, array $parameters = array(), Response $response = null){
-		$skeletons = $this->container->getParameter('tjm_base.skeletons');
 		if(!array_key_exists("page", $parameters)){
 			$parameters["page"] = Array();
 		}
-		if(!array_key_exists("skeleton", $parameters["page"])){
-			if($this->request->isXmlHttpRequest()){
-				$parameters["page"]["skeleton"] = $skeletons["ajax"];
-			}else{
-				foreach($skeletons as $name=>$skeleton){
-					if(array_key_exists("is{$name}", $_REQUEST)){
-						$parameters["page"]["skeleton"] = $skeleton;
-					}
+		$wraps = $this->container->getParameter('tjm_base.wraps');
+		if(!array_key_exists("wrap", $parameters["page"])){
+			$get = $this->get("request")->query;
+			$post = $this->get("request")->request;
+			foreach($wraps as $name=>$skeleton){
+				if(
+					$get->has("_wrap_{$name}")
+					|| $post->has("_wrap_{$name}")
+				){
+					$parameters["page"]["wrap"] = $name;
 				}
 			}
-			if(!array_key_exists("skeleton", $parameters["page"])){
-				$parameters["page"]["skeleton"] = $skeletons["page"];
+			if(!array_key_exists("wrap", $parameters["page"])){
+				if(
+					array_key_exists("bare", $wraps)
+					&& $this->request->isXmlHttpRequest()
+				){
+					$parameters["page"]["wrap"] = "bare";
+				}else{
+					$parameters["page"]["wrap"] = "full";
+				}
 			}
 		}
+		$parameters["page"]["skeleton"] = array_key_exists($parameters["page"]["wrap"], $wraps)
+			? $wraps[$parameters["page"]["wrap"]]
+			: $wraps["full"]
+		;
 		$response = $this->render($view, $parameters, $response);
 		return $response;
 	}
