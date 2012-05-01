@@ -1,8 +1,8 @@
 {% block pageDoctype %}<!DOCTYPE html>{% endblock %}
-<html class="no-js{% block pageClasses %}{% endblock %}" lang="{% block pageLanguage %}en{% endblock %}">
+<html{% if page.name %} id="page_{{ page.name }}"{% endif %} class="no-js{% block pageClasses %}{% if page.classes %} {{ page.classes }}{% endif %}{% endblock %}" lang="{% block pageLanguage %}{{ page.language|default('en') }}{% endblock %}">
 	<head>
-		<meta charset="utf-8" />
-		<title>{% block pageTitle %}Welcome!{% endblock %}</title>
+		<meta charset="{% block pageCharset %}{{ page.charset|default('utf-8') }}{% endblock %}" />
+		<title>{% block pageTitle %}{% if page.title %}{{ page.title }} - {% endif %}{{ site.title|default('Welcome!') }}{% endblock %}</title>
 {% block pageMeta %}{% endblock %}
 {% block pageStyles %}{% endblock %}
 {% block pageScriptsPreLoad %}{% endblock %}
