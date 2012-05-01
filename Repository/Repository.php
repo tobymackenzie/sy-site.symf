@@ -1,10 +1,9 @@
 <?php
 namespace TJM\Bundle\BaseBundle\Repository;
 
-use Doctrine\ORM\EntityRepository as BaseEntityRepository;
-use Cogneato\Bundle\BaseBundle\Entity as CEntity;
+use Doctrine\ORM\EntityRepository;
 
-class EntityRepository extends BaseEntityRepository{
+class Repository extends EntityRepository{
 	public function getCount($where = null) {
 		$qb = $this->_em->createQueryBuilder();
 		$query = $qb->select("COUNT(e)")->from($this->getEntityName(), "e");
