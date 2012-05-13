@@ -6,8 +6,8 @@
 <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 {% endblock %}
 
-{% block pageStylesheets %}
-{%	stylesheets filter='less,?yui_css' '@TJMBaseBundle/Resources/public/presentation/loaders/all.less' %}
+{% block pageStyles %}
+{%	stylesheets filter='stylus,?yui_css' '@TJMBaseBundle/Resources/public/presentation/base.styl' %}
 <link href="{{ asset_url }}" rel="stylesheet" />
 {%	endstylesheets %}
 {% endblock %}

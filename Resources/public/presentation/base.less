@@ -1,4 +1,11 @@
 //=====
+//==dependencies
+//=====/
+
+@import 'vendorPrefixes.less';
+@import 'fonts/base.less';
+
+//=====
 //==settings
 //=====/
 
@@ -46,7 +53,7 @@ body
 	margin: 0;
 	padding: 0;
 	line-height: 1.4;
-	.font-size(14);
+	.font-size(16);
 	}
 article
 ,aside
@@ -57,7 +64,7 @@ article
 ,header
 ,hgroup
 ,nav
-,section 
+,section
 	{
 	display: block;
 	}
@@ -75,6 +82,19 @@ table, tr, td{
 //--
 a{
 	margin: 0;
+	text-decoration: none;
+	&:link{
+		border-bottom: 1px solid rgba(0,0,255,0.25);
+		color: blue;
+		}
+	&:visited{
+		border-bottom: 1px solid rgba(128,0,128,0.25);
+		color: purple;
+		}
+	&:active{
+		border-bottom: 1px solid rgba(255,0,0,0.25);
+		color: red;
+		}
 	}
 h1
 ,h2
@@ -217,3 +237,14 @@ body{
 	padding-right: 0;
 	}
 
+//--
+//=symfony
+//--
+.sf-toolbarreset{
+	left: 90% !important
+	opacity: 0.3
+	&:hover{
+		left: 0 !important
+		opacity: 1.0
+		}
+	}

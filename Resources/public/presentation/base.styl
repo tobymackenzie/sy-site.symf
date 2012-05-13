@@ -1,0 +1,218 @@
+//=====
+//==dependencies
+//=====/
+
+@import 'vendorPrefixes.styl'
+@import 'fonts/base.styl'
+
+//=====
+//==settings
+//=====/
+
+//--
+//=colors
+//--
+
+//--
+//=fonts
+//--
+
+//=====
+//==mixins
+//=====/
+
+//--
+//=units
+//--
+
+
+//--
+//=vendor prefixes
+//--
+
+
+//=====
+//==base
+//=====/
+
+//--
+//=containers
+//--
+html
+	-box-sizing() //-use box model that includes padding and border
+	margin: 0
+	padding: 0
+	font-size: 6.25% //-make em/rem equal px in normal browsers
+	font-family: $fontstackTimes
+	-text-size-adjust()
+body
+,th
+,td
+	margin: 0
+	padding: 0
+	line-height: 1.4
+	-font-size(16)
+article
+,aside
+,details
+,figcaption
+,figure
+,footer
+,header
+,hgroup
+,nav
+,section
+	display: block
+table
+	border-collapse: collapse
+	border-spacing: 0
+table
+,tr
+,td
+	margin: 0
+	padding: 0
+
+//--
+//=text structures
+//--
+a
+	margin: 0
+	text-decoration: none
+	&:link
+		border-bottom: 1px solid rgba(blue, 0.25)
+		color: blue
+	&:hover
+		border-bottom-color: @color
+	&:visited
+		border-color: rgba(purple, 0.25)
+		color: purple
+	&:active
+		border-color: rgba(red, 0.25)
+		color: red
+h1
+,h2
+,h3
+,h4
+,h5
+,h6
+
+	margin: 0 0 15px 0
+	padding: 0
+h1 a
+,h2 a
+,h3 a
+,h4 a
+,h5 a
+,h6 a
+	color: inherit
+p
+	margin: 0 0 15px 0
+	padding: 0
+ul.plain
+,ol.plain
+	margin: 0
+	padding: 0
+	list-style: none
+
+//--
+//=media
+//--
+audio
+,canvas
+,video
+	display: inline
+	display: inline-block
+	zoom: 1
+audio:not([control])
+	display: none //-hide controllless audio elements
+iframe
+	border: 0
+img
+	border: 0 //-no borders, especially on hover
+	vertical-align: middle
+	-ms-interpolation-mode: bicubic //-fix resizing in IE7
+
+
+//=====
+//==reusable classes
+//=====/
+
+//--
+//=accessibility
+//--
+.screenreaderonly
+	display: inline
+	position: absolute
+	top: -9000px
+	left: -9000px
+	font-size: 0
+.listlinksjump a
+	@extends .screenreaderonly
+.linkjump
+	@extends .screenreaderonly
+.linkjump:active
+,.linkjump:focus
+,.linkjump:hover
+	display: inline
+	display: inline-block
+	position: static
+	z-index: 9999
+
+//--
+//=positioning
+//--
+.clear
+	clear: both
+//-clear all floats after div
+.clearafter
+	zoom: 1 //-for UA IE 7 and below
+	&:after
+		display: block
+		clear: both
+		height: 0
+		content: " "
+.floatright
+	float: right
+.floatleft
+	float: left
+
+
+//=====
+//==structure
+//=====/
+
+body
+	@extends .clearafter
+	margin: auto //-center on older browsers
+
+//--
+//=columns
+//--
+//-make columns equal height in older browsers
+.ua-old .columns.equalheight
+	overflow: hidden
+	.column
+		float: left
+		margin-bottom: -32000px
+		padding: 0 10px 32000px
+		&.c-first
+			border-left: none
+			padding-left: 0
+		&.c-last
+			border-right: none
+			padding-right: 0
+.ua-new .columns
+	-display-box()
+	.column
+		-box-flex(1)
+
+
+//--
+//=symfony
+//--
+.sf-toolbarreset
+	left: 90% !important
+	opacity: 0.3
+	&:hover
+		left: 0 !important
+		opacity: 1.0
