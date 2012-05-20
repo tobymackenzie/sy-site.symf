@@ -12,8 +12,10 @@
 	<div id="pageheader" class="wrappageheader" role="banner">
 		<header class="pageheader">
 {%		block pageHeaderContent %}
-			<div class="pagejumpto jumpto">
+			<div class="pagejumpto jumpto listlinksjump">
+{%			block pageLinksJumpTo %}
 				<a href="#pagenavigation">Jump to site navigation</a>
+{%			endblock %}
 			</div>
 {%		endblock %}
 		</header>
