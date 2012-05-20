@@ -1,35 +1,21 @@
 //=====
-//==dependencies
-//=====/
-
-@import 'vendorPrefixes.styl'
-@import 'fonts/base.styl'
-
-//=====
 //==settings
 //=====/
 
 //--
 //=colors
 //--
+$colorLinkBase ?= blue
+$colorLinkBaseActive ?= red
+$colorLinkBaseVisited ?= purple
 
-//--
-//=fonts
-//--
 
 //=====
-//==mixins
+//==dependencies
 //=====/
 
-//--
-//=units
-//--
-
-
-//--
-//=vendor prefixes
-//--
-
+@import 'vendorPrefixes.styl'
+@import 'fonts/base.styl'
 
 //=====
 //==base
@@ -44,31 +30,31 @@ html
 	padding: 0
 	font-size: 6.25% //-make em/rem equal px in normal browsers
 	font-family: $fontstackHelvetica
-	-text-size-adjust()
+	-text-size-adjust() //-on mobile devices, prevent text from auto resize on orientation change
 body
-,th
-,td
+th
+td
 	margin: 0
 	padding: 0
 	line-height: 1.4
 	-font-size(16)
 article
-,aside
-,details
-,figcaption
-,figure
-,footer
-,header
-,hgroup
-,nav
-,section
+aside
+details
+figcaption
+figure
+footer
+header
+hgroup
+nav
+section
 	display: block
 table
 	border-collapse: collapse
 	border-spacing: 0
 table
-,tr
-,td
+tr
+td
 	margin: 0
 	padding: 0
 
@@ -80,7 +66,7 @@ a
 	margin: 0
 	text-decoration: none
 	&:link
-		color: blue
+		color: $colorLinkBase
 		&:before
 			opacity: 0.25
 			position: absolute
@@ -90,37 +76,38 @@ a
 			height: 1px
 			background: @color
 			content: ' '
+	&:focus:before
 	&:hover:before
 		opacity: 1
 	&:visited
-		color: purple
+		color: $colorLinkBaseVisited
 		&:before
 			background: @color
 	&:active
-		color: red
+		color: $colorLinkBaseActive
 		&:before
 			background: @color
 h1
-,h2
-,h3
-,h4
-,h5
-,h6
+h2
+h3
+h4
+h5
+h6
 
 	margin: 0 0 15px 0
 	padding: 0
 h1 a
-,h2 a
-,h3 a
-,h4 a
-,h5 a
-,h6 a
+h2 a
+h3 a
+h4 a
+h5 a
+h6 a
 	color: inherit
 p
 	margin: 0 0 15px 0
 	padding: 0
 ul.plain
-,ol.plain
+ol.plain
 	margin: 0
 	padding: 0
 	list-style: none
@@ -129,8 +116,8 @@ ul.plain
 //=media
 //--
 audio
-,canvas
-,video
+canvas
+video
 	display: inline
 	display: inline-block
 	zoom: 1
@@ -157,17 +144,29 @@ img
 	top: -9000px
 	left: -9000px
 	font-size: 0
-.listlinksjump a
-	@extends .screenreaderonly
+	&:before
+		display: none
+		content: ''
 .linkjump
 	@extends .screenreaderonly
-.linkjump:active
-,.linkjump:focus
-,.linkjump:hover
-	display: inline
-	display: inline-block
-	position: static
-	z-index: 9999
+	&:active
+	&:focus
+	&:hover
+		display: inline
+		display: inline-block
+		position: static
+		z-index: 9999
+		font-size: inherit
+.listlinksjump
+	a
+		@extends .linkjump
+.pagejumpto
+	@extends .listlinksjump
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	text-align: center
 
 //--
 //=positioning

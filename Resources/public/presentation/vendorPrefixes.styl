@@ -1,39 +1,60 @@
 //=====
+//==settings
+//=====/
+
+$prefixesVendors ?= moz ms o webkit official
+
+//=====
+//==functions
+//=====/
+
+//-@based on nib: https://github.com/visionmedia/nib/blob/master/lib/nib/vendor.styl
+fGenerateVendorPrefixedProperties($property, $arguments, $default = '', $only = null, $not = null)
+	$arguments = $default if length($arguments) == 0
+	for $prefix in $prefixesVendors
+		unless ($only and !($prefix in $only)) or ($not and $prefix in $not)
+			if $prefix == official
+				{$property}: $arguments
+			else
+				{'-' + $prefix + '-' + $property}: $arguments
+
+//-@based on nib
+fGenerateVendorPrefixedValues($arguments, $default = '', $only = null, $not = null)
+	$arguments = $default if length($arguments) == 0
+	$property = current-property[0]
+	for $prefix in $prefixesVendors
+		unless ($only and !($prefix in $only)) or ($not and $prefix in $not)
+			unless $prefix == official
+				add-property($property, '-%s-%s' % ($prefix $arguments))
+	$arguments
+
+
+
+//=====
 //==mixins
 //=====/
 
--box-align($setting= center)
-	-moz-box-align: arguments
-	-webkit-box-align: arguments
-	box-align: arguments
--box-flex($setting= 0)
-	-moz-box-flex: arguments
-	-webkit-box-flex: arguments
-	box-flex: arguments
--box-ordinal-group($setting= 1)
-	-moz-box-ordinal-group: arguments
-	-webkit-box-ordinal-group: arguments
-	box-ordinal-group: arguments
--box-orient($setting= horizontal)
-	-moz-box-orient: arguments
-	-webkit-box-orient: arguments
-	box-orient: arguments
--box-pack($setting= center)
-	-moz-box-pack: arguments
-	-webkit-box-pack: arguments
-	box-pack: arguments
+-box-align()
+	fGenerateVendorPrefixedProperties(box-align, arguments, $default: center, $only: moz webkit official)
+-box-flex()
+	fGenerateVendorPrefixedProperties(box-flex, arguments, $default: 0, $only: moz webkit official)
+-box-ordinal-group()
+	fGenerateVendorPrefixedProperties(box-ordinal-group, arguments, $default: 1, $only: moz webkit official)
+-box-orient()
+	fGenerateVendorPrefixedProperties(box-orient, arguments, $default: horizontal, $only: moz webkit official)
+-box-pack()
+	fGenerateVendorPrefixedProperties(box-pack, arguments, $default: center, $only: moz webkit official)
 -box-sizing()
-	if length(arguments)
-		arguments = border-box
-	-moz-box-sizing: arguments
-	-webkit-box-sizing: arguments
-	box-sizing: arguments
+	fGenerateVendorPrefixedProperties(box-sizing, arguments, $default: border-box, $only: moz webkit official)
+-column-count()
+	fGenerateVendorPrefixedProperties(column-count, arguments, $only: moz webkit official)
+-column-gap()
+	fGenerateVendorPrefixedProperties(column-gap, arguments, $only: moz webkit official)
+-column-rule()
+	fGenerateVendorPrefixedProperties(column-rule, arguments, $only: moz webkit official)
+-column-rule-color()
+	fGenerateVendorPrefixedProperties(column-rule-color, arguments, $only: moz webkit official)
 -display-box()
-	display: -moz-box
-	display: -webkit-box
-	display: box
-//-on mobile devices, prevent text from auto resize on orientation change
+	display: fGenerateVendorPrefixedValues(box, $only: moz webkit)
 -text-size-adjust()
-	arguments = 100% if length(arguments) == 0
-	-webkit-text-size-adjust: arguments
-	-ms-text-size-adjust: arguments
+	fGenerateVendorPrefixedProperties(text-size-adjust, arguments, $default: 100%, $only: ms webkit)

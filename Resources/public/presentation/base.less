@@ -159,19 +159,19 @@ img{
 //=accessibility
 //--
 .listlinksjump a{
-	.screenreaderonly;
+	.linkjump;
 	}
 .linkjump{
 	.screenreaderonly;
-	}
-.linkjump:active
-,.linkjump:focus
-,.linkjump:hover
-	{
-	display: inline;
-	display: inline-block;
-	position: static;
-	z-index: 9999;
+	&:active
+	,&:focus
+	,&:hover
+		{
+		display: inline;
+		display: inline-block;
+		position: static;
+		z-index: 9999;
+		}
 	}
 .screenreaderonly{
 	display: inline;
@@ -241,10 +241,10 @@ body{
 //=symfony
 //--
 .sf-toolbarreset{
-	left: 90% !important
-	opacity: 0.3
+	left: 90% !important;
+	opacity: 0.3;
 	&:hover{
-		left: 0 !important
-		opacity: 1.0
+		left: 0 !important;
+		opacity: 1.0;
 		}
 	}
