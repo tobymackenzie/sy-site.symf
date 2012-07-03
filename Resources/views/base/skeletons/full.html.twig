@@ -7,14 +7,14 @@
 {% endblock %}
 
 {% block pageBody %}
-<div class="wrappage">
+<div class="wrapPage">
 {%	block pageHeader %}
-	<div id="pageheader" class="wrappageheader" role="banner">
-		<header class="pageheader">
+	<div id="pageHeader" class="wrapPageHeader" role="banner">
+		<header class="pageHeader">
 {%		block pageHeaderContent %}
-			<div class="pagejumpto jumpto listlinksjump">
+			<div class="pageJumpTo jumpTo listLinksJump">
 {%			block pageLinksJumpTo %}
-				<a href="#pagenavigation">Jump to site navigation</a>
+				<a class="itemLinkJump" href="#pagenavigation">Jump to site navigation</a>
 {%			endblock %}
 			</div>
 {%		endblock %}
@@ -22,15 +22,15 @@
 	</div>
 {%	endblock %}
 {%	block pageMain %}
-	<div id="pagemain" class="wrappagemain" role="main">
-		<div class="pagemain">
+	<div id="pageMain" class="wrapPageMain" role="main">
+		<div class="pageMain">
 			{% block pageMainContent %}{% endblock %}
 		</div>
 	</div>
 {%	endblock %}
 {%	block pageNavigation %}
-	<div id="pagenavigation" class="wrappagenavigation" role="navigation">
-		<nav class="pagenavigation">
+	<div id="pageNavigation" class="wrapPageNavigation" role="navigation">
+		<nav class="pageNavigation">
 {%		block pageNavigationContent %}
 			<h2>Site Navigation</h2>
 {%		endblock %}
@@ -38,8 +38,8 @@
 	</div>
 {%	endblock %}
 {%	block pageFooter %}
-	<div id="pagefooter" class="wrappagefooter" role="contentinfo">
-		<footer class="pagefooter">
+	<div id="pageFooter" class="wrapPageFooter" role="contentinfo">
+		<footer class="pageFooter">
 {%		block pageFooterContent %}
 			<h2>Site Footer</h2>
 {%		endblock %}
