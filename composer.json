@@ -12,7 +12,10 @@
    "TJM\\Bundle\\BaseBundle": ""
   }
  }
- ,"minimum-stability": "dev"
+ ,"require": {
+  "php": ">=5.3.3"
+  ,"symfony/symfony": ">=2.0"
+ }
  ,"target-dir": "TJM/Bundle/BaseBundle"
  ,"version": "master"
 }
