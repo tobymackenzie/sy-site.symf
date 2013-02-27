@@ -17,5 +17,4 @@
   ,"symfony/symfony": ">=2.0"
  }
  ,"target-dir": "TJM/Bundle/BaseBundle"
- ,"version": "master"
 }
