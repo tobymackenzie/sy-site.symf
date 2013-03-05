@@ -20,7 +20,6 @@ class Configuration implements ConfigurationInterface{
 			->children()
 				->arrayNode('page_wraps')
 //-! must be 2.1 thing				->setInfo('set templates for renderPage')
-					->addDefaultsIfNotSet()
 					->useAttributeAsKey("node")
 					->beforeNormalization()
 						->ifTrue(function($value){ return !is_array($value); })

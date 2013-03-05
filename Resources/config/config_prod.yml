@@ -1,17 +1,12 @@
-#doctrine:
-# orm:
-#  metadata_cache_driver: apc
-#  result_cache_driver: apc
-#  query_cache_driver: apc
-
+#==Symfony Standard
+#===Monolog
 monolog:
  handlers:
   main:
-   type:   fingers_crossed
    action_level: error
    handler:   nested
+   type:   fingers_crossed
   nested:
-   type:  stream
-   path:  %kernel.logs_dir%/%kernel.environment%.log
    level: debug
-
+   path:  %kernel.logs_dir%/%kernel.environment%.log
+   type:  stream

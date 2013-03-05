@@ -2,57 +2,63 @@ imports:
  - { resource: security.yml }
  - { resource: services.yml }
 
+#==Symfony Standard
+#===Framework
 framework:
- #esi:    ~
- #translator:   { fallback: %locale% }
- secret:    %secret%
- charset:   UTF-8
- router:    { resource: "%kernel.root_dir%/config/routing.yml" }
- form:   true
  csrf_protection: true
- validation:   { enable_annotations: true }
- templating:   { engines: ['twig'] } #assets_version: SomeVersionScheme
- session:
-  default_locale: %locale%
-  auto_start:  true
+ default_locale: '%locale'
+ #esi:    ~
+ form:   true
+ router:
+  resource: '%kernel.root_dir%/config/routing.yml'
+  strict_requirements: '%kernel.debug'
+ secret:    %secret%
+ #translator:   {fallback: %locale%}
+ validation:   {enable_annotations: true}
+ templating:   {engines: ['twig']} #assets_version: SomeVersionScheme
+ trusted_proxies:
+ session: ~
 
-# Twig Configuration
-twig:
- debug: %kernel.debug%
- strict_variables: false
-
-# Assetic Configuration
+#===Assetic
 assetic:
+ bundles: []
  debug: %kernel.debug%
  use_controller: false
  # java: /usr/bin/java
  filters:
   cssrewrite: ~
   yui_css:
-   jar: %kernel.root_dir%/../vendor/yuicompressor/build/yuicompressor-2.4.8pre.jar
+   jar: '%kernel.root_dir%/../vendor/yuicompressor/build/yuicompressor-2.4.8pre.jar'
 
-# Doctrine Configuration
+#===Doctrine
 doctrine:
  dbal:
+  charset:  UTF8
+  dbname:   %database_name%
   driver:   %database_driver%
   host:  %database_host%
-  port:  %database_port%
-  dbname:   %database_name%
-  user:  %database_user%
   password: %database_password%
-  charset:  UTF8
+  port:  %database_port%
+  user:  %database_user%
  orm:
   auto_generate_proxy_classes: %kernel.debug%
   auto_mapping: true
 
-# Swiftmailer Configuration
+#===Twig
+twig:
+ debug: %kernel.debug%
+ strict_variables: '%kernel.debug%'
+
+#===Swiftmailer
 swiftmailer:
- transport: %mailer_transport%
  host:   %mailer_host%
  username:  %mailer_user%
  password:  %mailer_password%
+ spool: {type: memory}
+ transport: %mailer_transport%
 
-jms_security_extra:
- secure_controllers:  true
- secure_all_services: false
 
+#==TJM
+tjm_base:
+ page_wraps:
+  full: ":base:skeletons/full.html.twig"
