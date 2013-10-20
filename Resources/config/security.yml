@@ -1,7 +1,3 @@
 #==Symfony Standard
 #===JMS
-jms_security_extra:
- expressions: true
- secure_all_services: false
-
 security:
