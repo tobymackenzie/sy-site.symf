@@ -8,8 +8,8 @@
   }
  ]
  ,"autoload": {
-  "psr-0": {
-   "TJM\\Bundle\\BaseBundle": ""
+  "psr-4": {
+   "TJM\\Bundle\\BaseBundle\\": ""
   }
  }
  ,"require": {
