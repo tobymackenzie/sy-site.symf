@@ -1,15 +1,28 @@
-{% block pageDoctype %}<!DOCTYPE html>{% endblock %}
-<html{% if page.name is defined %} id="page_{{ page.name }}"{% endif %} class="{% block pageClasses %}no-js environment_{{ app.environment }} {% if page.classes is defined %} {{ page.classes }}{% endif %}{% endblock %}" lang="{% block pageLanguage %}{{ page.language|default('en') }}{% endblock %}">
+{% block doctype %}<!DOCTYPE html>{% endblock %}
+{% block docWrap %}
+<html{% block docAttr %} class="{% block docClasses %}doc doc-{{ doc.name | default('default') }} ua-no-js env-{{ app.environment }}{% if doc.classes is defined %} {{doc.classes | raw}}{% endif %}{% endblock %}" id="doc-{{ doc.name | default('default') }}" lang="{{ doc.language | default('en') }}"{% if doc.attr is defined %} {{doc.attr | raw}}{% endif %}{% endblock %}>
+{%	block docHeadWrap %}
 	<head>
-		<meta charset="{% block pageCharset %}{{ page.charset|default('utf-8') }}{% endblock %}" />
-		<title>{% block pageTitle %}{% if page.title is defined %}{{ page.title }} - {% endif %}{{ site.title|default('Welcome!') }}{% endblock %}</title>
-{% block pageMeta %}{% endblock %}
-{% block pageStyles %}{% endblock %}
-{% block pageScriptsPreLoad %}{% endblock %}
+{%		block docCharsetWrap %}
+		<meta charset="{% block docCharset %}{{ doc.charset | default('utf-8') }}{% endblock %}" />
+{%		endblock %}
+{%		block docTitleWrap %}
+		<title>{% block docTitle %}{% if doc.title is defined %}{{doc.title}} - {% endif %}{{ site.title | default('Site') }}{% endblock %}</title>
+{%		endblock %}
+{%		block docMeta %}
+		{% if doc.description is defined %}<meta content="{{doc.description}}" name="description" />{% endif %}
+		{% if doc.keywords is defined %}<meta content="{{doc.keywords}}" name="keywords" />{% endif %}
+		{% if site.isResponsive is defined %}<meta content="initial-scale=1,width=device-width" name="viewport" />{% endif %}
+{%		endblock %}
+{%		block docStyles %}{% endblock %}
+{%		block docPreScripts %}{% endblock %}
 	</head>
-	<body>
-{% block pageBody %}{% endblock %}
-{% block pageScriptsPostLoad %}{% endblock %}
+{%	endblock %}
+{%	block docBodyWrap %}
+	<body id="body">
+{%		block docBody %}{% endblock %}
+{%		block docPostScripts %}{% endblock %}
 	</body>
+{%	endblock %}
 </html>
-
+{% endblock %}

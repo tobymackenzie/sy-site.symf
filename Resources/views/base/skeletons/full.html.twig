@@ -1,46 +1,50 @@
 {% extends 'TJMBaseBundle:base:skeletons/base.html.twig' %}
 
-{% block pageMeta %}
-{# tell mobile devices this site is designed for them #}
-<meta name="viewport" content="width=device-width" />
+{% block docMeta %}
 <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+{{ parent() }}
 {% endblock %}
 
-{% block pageBody %}
-<div class="wrapPage">
-{%	block pageHeader %}
-	<div id="pageHeader" class="wrapPageHeader" role="banner">
-		<header class="pageHeader">
-{%		block pageHeaderContent %}
-			<div class="pageJumpTo jumpTo listLinksJump">
-{%			block pageLinksJumpTo %}
-				<a class="itemLinkJump" href="#pageNavigation">Jump to site navigation</a>
+{% block docBody %}
+<div class="docBody">
+{%	block docHeaderWrap %}
+	<div class="docHeaderWrap" role="banner">
+		<header class="docHeader">
+{%		block docJumpWrap %}
+			<div class="docJumpActions jumpActions">
+{%			block docJump %}
+				<a class="jumpAction" href="#docNav">Jump to site navigation</a>
 {%			endblock %}
 			</div>
+{%		endblock %}
+{%		block docHeader %}
 {%		endblock %}
 		</header>
 	</div>
 {%	endblock %}
-{%	block pageMain %}
-	<div id="pageMain" class="wrapPageMain" role="main">
-		<div class="pageMain">
-			{% block pageMainContent %}{% endblock %}
-		</div>
+{%	block docContentWrap %}
+	<div class="docContent">
+{%		block docMainWrap %}
+		<div id="docMain" class="docMain"><main class="docMain" role="main">
+			{% block docMain %}{% endblock %}
+		</main></div>
+{%		endblock %}
+		{% block docAside %}{% endblock %}
 	</div>
 {%	endblock %}
-{%	block pageNavigation %}
-	<div id="pageNavigation" class="wrapPageNavigation" role="navigation">
-		<nav class="pageNavigation">
-{%		block pageNavigationContent %}
+{%	block docNavWrap %}
+	<div id="docNav" class="docNavWrap">
+		<nav class="docNav" role="navigation">
+{%		block docNav %}
 			<h2>Site Navigation</h2>
 {%		endblock %}
 		</nav>
 	</div>
 {%	endblock %}
-{%	block pageFooter %}
-	<div id="pageFooter" class="wrapPageFooter" role="contentinfo">
-		<footer class="pageFooter">
-{%		block pageFooterContent %}
+{%	block docFooterWrap %}
+	<div id="docFooter" class="docFooterWrap">
+		<footer class="docFooter" role="contentinfo">
+{%		block docFooter %}
 			<h2>Site Footer</h2>
 {%		endblock %}
 		</footer>
