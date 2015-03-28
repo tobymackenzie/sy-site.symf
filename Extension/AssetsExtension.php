@@ -13,11 +13,14 @@ class AssetsExtension extends Base{
 	public function __construct(ContainerInterface $container){
 		$this->container = $container;
 	}
-	public function getAssetUrl($path, $packageName = null){
-		$url = $this->container->get('templating.helper.assets')->getUrl($path, $packageName);
+	public function getAssetUrl($path, $packageName = null, $absolute = false, $version = null){
+		$url = $this->container->get('templating.helper.assets')->getUrl($path, $packageName, $version);
 		if(!$packageName && preg_match("/^(css|images|js)\//", $path)){
 			$assetBase = str_replace($this->container->getParameter('kernel.root_dir') . '/../web', '', $this->container->getParameter('assetic.write_to'));
 			$url = "{$assetBase}{$url}";
+		}
+		if($absolute && method_exists($this, 'ensureUrlIsAbsolute')){
+			$url = $this->ensureUrlIsAbsolute($url);
 		}
 		return $url;
 	}
