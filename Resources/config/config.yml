@@ -5,4 +5,4 @@ imports:
 #==TJM
 tjm_base:
  page_wraps:
-  full: ":base:skeletons/full.html.twig"
+  full: ":skeletons:full.html.twig"
