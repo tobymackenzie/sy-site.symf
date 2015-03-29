@@ -19,8 +19,30 @@ class AssetsExtension extends Base{
 			$assetBase = str_replace($this->container->getParameter('kernel.root_dir') . '/../web', '', $this->container->getParameter('assetic.write_to'));
 			$url = "{$assetBase}{$url}";
 		}
-		if($absolute && method_exists($this, 'ensureUrlIsAbsolute')){
+		if($absolute){
 			$url = $this->ensureUrlIsAbsolute($url);
+		}
+		return $url;
+	}
+
+	/*
+	Hack, `getAssetUrl()` needs this but parent is private and so is the `context` that is used by it.
+	*/
+	protected function ensureUrlIsAbsolute($url){
+		if(!(strpos($url, '://') !== false || strpos($url, '//') === 0)){
+			if(isset($_SERVER['HTTP_X_FORWARDED_PROTO'])){
+				$urlRoot = $_SERVER['HTTP_X_FORWARDED_PROTO'];
+			}else{
+				$urlRoot = 'http';
+				if($_SERVER["HTTPS"] === 'on'){
+					$urlRoot .= 's';
+				}
+			}
+			$urlRoot .= '://' . $_SERVER['SERVER_NAME'];
+			if((int) $_SERVER["SERVER_PORT"] !== 80){
+				$urlRoot .= ':' . $_SERVER["SERVER_PORT"];
+			}
+			$url = $urlRoot . '/' . $url;
 		}
 		return $url;
 	}
