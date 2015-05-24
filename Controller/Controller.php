@@ -5,12 +5,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Symfony\Component\HttpFoundation\Response;
 
 class Controller extends BaseController{
-	/*==
-	provide easy access to services
-	==*/
-	public function __get($name){
-		return $this->get($name);
-	}
 	/*=====
 	=renderers
 	=====*/
@@ -23,8 +17,9 @@ class Controller extends BaseController{
 		}
 		$wraps = $this->container->getParameter('tjm_base.wraps');
 		if(!array_key_exists("wrap", $parameters["page"])){
-			$get = $this->get("request")->query;
-			$post = $this->get("request")->request;
+			$request = $this->get("request");
+			$get = $request->query;
+			$post = $request->request;
 			foreach($wraps as $name=>$skeleton){
 				if(
 					$get->has("_wrap_{$name}")
@@ -36,7 +31,7 @@ class Controller extends BaseController{
 			if(!array_key_exists("wrap", $parameters["page"])){
 				if(
 					array_key_exists("bare", $wraps)
-					&& $this->request->isXmlHttpRequest()
+					&& $request->isXmlHttpRequest()
 				){
 					$parameters["page"]["wrap"] = "bare";
 				}else{
