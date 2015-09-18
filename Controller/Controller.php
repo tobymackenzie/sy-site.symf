@@ -18,16 +18,6 @@ class Controller extends BaseController{
 		$wraps = $this->container->getParameter('tjm_base.wraps');
 		if(!array_key_exists("wrap", $parameters["page"])){
 			$request = $this->get("request");
-			$get = $request->query;
-			$post = $request->request;
-			foreach($wraps as $name=>$skeleton){
-				if(
-					$get->has("_wrap_{$name}")
-					|| $post->has("_wrap_{$name}")
-				){
-					$parameters["page"]["wrap"] = $name;
-				}
-			}
 			if(!array_key_exists("wrap", $parameters["page"])){
 				if(
 					array_key_exists("bare", $wraps)
