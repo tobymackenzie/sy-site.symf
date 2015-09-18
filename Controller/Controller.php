@@ -15,24 +15,27 @@ class Controller extends BaseController{
 		if(!array_key_exists("page", $parameters)){
 			$parameters["page"] = Array();
 		}
-		$wraps = $this->container->getParameter('tjm_base.wraps');
-		if(!array_key_exists("wrap", $parameters["page"])){
-			$request = $this->get("request");
+		$request = (isset($parameters['request'])) ? $parameters['request'] : $this->get("request");
+		if(!isset($parameters["page"]["skeleton"])){
+			$wraps = $this->container->getParameter('tjm_base.wraps');
 			if(!array_key_exists("wrap", $parameters["page"])){
-				if(
-					array_key_exists("bare", $wraps)
-					&& $request->isXmlHttpRequest()
-				){
-					$parameters["page"]["wrap"] = "bare";
-				}else{
-					$parameters["page"]["wrap"] = "full";
+				if(!array_key_exists("wrap", $parameters["page"])){
+					if(
+						array_key_exists("bare", $wraps)
+						&& $request->isXmlHttpRequest()
+					){
+						$parameters["page"]["wrap"] = "bare";
+					}else{
+						$parameters["page"]["wrap"] = "full";
+					}
 				}
 			}
+			$parameters["page"]["skeleton"] = array_key_exists($parameters["page"]["wrap"], $wraps)
+				? $wraps[$parameters["page"]["wrap"]]
+				: $wraps["full"]
+			;
 		}
-		$parameters["page"]["skeleton"] = array_key_exists($parameters["page"]["wrap"], $wraps)
-			? $wraps[$parameters["page"]["wrap"]]
-			: $wraps["full"]
-		;
+		$parameters['page']['skeleton'] = str_replace('{format}', $request->getRequestFormat() , $parameters['page']['skeleton']);
 		$response = $this->render($view, $parameters, $response);
 		return $response;
 	}
