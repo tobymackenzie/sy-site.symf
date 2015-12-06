@@ -15,7 +15,7 @@ class Controller extends BaseController{
 		if(!array_key_exists("page", $parameters)){
 			$parameters["page"] = Array();
 		}
-		$request = (isset($parameters['request'])) ? $parameters['request'] : $this->get("request");
+		$request = (isset($parameters['request'])) ? $parameters['request'] : $this->get("request_stack")->getCurrentRequest();
 		if(!isset($parameters["page"]["skeleton"])){
 			$wraps = $this->container->getParameter('tjm_base.wraps');
 			if(!array_key_exists("wrap", $parameters["page"])){
