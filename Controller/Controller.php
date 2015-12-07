@@ -5,13 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Symfony\Component\HttpFoundation\Response;
 
 class Controller extends BaseController{
-	/*=====
-	=renderers
-	=====*/
-	/*==
-	allow adding custom functionality to rendering of pages (on override)
-	==*/
-	public function renderPage($view, array $parameters = array(), Response $response = null){
+	protected function getGlobalRenderData(array $parameters = Array()){
 		if(!array_key_exists("page", $parameters)){
 			$parameters["page"] = Array();
 		}
@@ -36,6 +30,16 @@ class Controller extends BaseController{
 			;
 		}
 		$parameters['page']['skeleton'] = str_replace('{format}', $request->getRequestFormat() , $parameters['page']['skeleton']);
+		return $parameters;
+	}
+	/*=====
+	=renderers
+	=====*/
+	/*==
+	allow adding custom functionality to rendering of pages (on override)
+	==*/
+	public function renderPage($view, array $parameters = array(), Response $response = null){
+		$parameters = $this->getGlobalRenderData($parameters);
 		$response = $this->render($view, $parameters, $response);
 		return $response;
 	}
