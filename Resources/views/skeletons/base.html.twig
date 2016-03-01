@@ -1,6 +1,6 @@
 {% block doctype %}<!DOCTYPE html>{% endblock %}
 {% block docWrap %}
-<html{% block docAttr %} class="{% block docClasses %}doc doc-{{ doc.name | default('default') }} ua-no-js env-{{ app.environment }}{% if doc.classes is defined %} {{doc.classes | raw}}{% endif %}{% endblock %}" id="doc-{{ doc.name | default('default') }}" lang="{{ doc.language | default('en') }}"{% if doc.attr is defined %} {{doc.attr | raw}}{% endif %}{% endblock %}>
+<html{% block docAttr %} class="{% block docClasses %}doc doc-{{ doc.name | default('default') }} ua-no-js env-{{ app.environment }}{% if doc.classes is defined %} {{doc.classes | raw}}{% endif %}{% endblock %}" id="doc-{{ doc.name | default('default') }}"{% if doc.attr is defined %} {{doc.attr | raw}}{% endif %}{% endblock %}>
 {%	block docHeadWrap %}
 	<head>
 {%		block docCharsetWrap %}

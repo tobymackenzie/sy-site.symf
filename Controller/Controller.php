@@ -30,6 +30,22 @@ class Controller extends BaseController{
 			;
 		}
 		$parameters['page']['skeleton'] = str_replace('{format}', $request->getRequestFormat() , $parameters['page']['skeleton']);
+		if(!isset($parameters['doc'])){
+			$parameters['doc'] = Array();
+		}
+		if(!isset($parameters['doc']['attr'])){
+			$parameters['doc']['attr'] = '';
+		}
+		if($parameters['doc']['attr']){
+			$parameters['doc']['attr'] .= ' ';
+		}
+		if(!isset($parameters['doc']['language'])){
+			$parameters['doc']['language'] = 'en';
+		}
+		if(strpos($parameters['doc']['attr'], 'lang=') === false){
+			$parameters['doc']['attr'] .= 'lang="' . $parameters['doc']['language'] . '"';
+		}
+		}
 		return $parameters;
 	}
 	/*=====
