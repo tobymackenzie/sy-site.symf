@@ -45,6 +45,10 @@ class Controller extends BaseController{
 		if(strpos($parameters['doc']['attr'], 'lang=') === false){
 			$parameters['doc']['attr'] .= 'lang="' . $parameters['doc']['language'] . '"';
 		}
+		if($request->getRequestFormat() === 'xhtml'){
+			if(strpos($parameters['doc']['attr'], 'xmlns=') === false){
+				$parameters['doc']['attr'] .= ' xmlns="http://www.w3.org/1999/xhtml" xml:lang="' . $parameters['doc']['language'] . '"';
+			}
 		}
 		return $parameters;
 	}
