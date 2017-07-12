@@ -41,7 +41,7 @@
 		</nav>
 	</div>
 {%	endblock %}
-{%	block docFooterWrap %}
+{%	block docFooterWrap %}{% if block('docFooter') %}
 	<div id="docFooter" class="docFooterWrap">
 		<footer class="docFooter" role="contentinfo">
 {%		block docFooter %}
@@ -49,6 +49,6 @@
 {%		endblock %}
 		</footer>
 	</div>
-{%	endblock %}
+{%	endif %}{% endblock %}
 </div>
 {% endblock %}
