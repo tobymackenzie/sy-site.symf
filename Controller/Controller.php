@@ -1,7 +1,7 @@
 <?php
 namespace TJM\Bundle\BaseBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as BaseController;
 use Symfony\Component\HttpFoundation\Response;
 
 class Controller extends BaseController{
@@ -64,4 +64,3 @@ class Controller extends BaseController{
 		return $response;
 	}
 }
-
