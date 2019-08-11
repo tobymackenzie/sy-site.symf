@@ -2,12 +2,17 @@
 namespace TJM\Bundle\BaseBundle\Command;
 
 use Exception;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class SymfonyPermissionsCommand extends ContainerAwareCommand{
+class SymfonyPermissionsCommand extends Command{
+	protected $rootDir;
+	public function __construct($rootDir){
+		$this->rootDir = $rootDir;
+		parent::__construct();
+	}
 	protected function configure(){
 		$this
 			->setName('init:permissions')
@@ -33,7 +38,7 @@ class SymfonyPermissionsCommand extends ContainerAwareCommand{
 			}
 
 			//-! need to create a service to get these paths from
-			$appPath = $this->getContainer()->get('kernel')->getRootDir();
+			$appPath = $this->rootDir;
 			//-# prefer Symfony 3 directory structure, but support Symfony 2 directory structure
 			$varPath = $appPath . '/../var';
 			if(!is_dir($varPath)){
