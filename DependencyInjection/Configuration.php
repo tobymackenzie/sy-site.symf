@@ -14,8 +14,13 @@ class Configuration implements ConfigurationInterface{
 	 * {@inheritDoc}
 	 */
 	public function getConfigTreeBuilder(){
-		$treeBuilder = new TreeBuilder();
-		$rootNode = $treeBuilder->root('tjm_base');
+		$treeBuilder = new TreeBuilder('tjm_base');
+		//--must set name and get root node differently in symfony < 4
+		if(method_exists($treeBuilder, 'getRootNode')){
+			$rootNode = $treeBuilder->getRootNode();
+		}else{
+			$treeBuilder->root('tjm_base');
+		}
 		$rootNode
 			->children()
 				->arrayNode('page_wraps')
@@ -32,4 +37,3 @@ class Configuration implements ConfigurationInterface{
 		return $treeBuilder;
 	}
 }
-
