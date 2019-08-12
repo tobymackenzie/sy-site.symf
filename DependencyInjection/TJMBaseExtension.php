@@ -20,9 +20,9 @@ class TJMBaseExtension extends Extension{
 		$config = $this->processConfiguration($configuration, $configs);
 //var_dump($configs);die();
 		$pageWraps = Array(
-			"bare"=> "TJMBaseBundle:skeletons:bare.html.twig"
-			,"simple"=> "TJMBaseBundle:skeletons:simple.html.twig"
-			,"full"=> "TJMBaseBundle:skeletons:full.html.twig"
+			"bare"=> "@TJMBase/skeletons/bare.html.twig"
+			,"simple"=> "@TJMBase/skeletons/simple.html.twig"
+			,"full"=> "@TJMBase/skeletons/full.html.twig"
 		);
 		if(array_key_exists("page_wraps", $config)){
 			$pageWraps = array_merge($pageWraps, $config["page_wraps"]);
@@ -32,4 +32,3 @@ class TJMBaseExtension extends Extension{
 		// $loader->load('services.yml');
 	}
 }
-
