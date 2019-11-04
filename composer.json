@@ -17,7 +17,8 @@
   ,"symfony/framework-bundle": ">=3.3"
  }
  ,"suggest": {
-	 "symfony/console": ""
-	 ,"twig/twig": ""
+	"symfony/asset": ""
+	,"symfony/console": ""
+	,"twig/twig": ""
  }
 }
