@@ -1,7 +1,7 @@
 {% block doctype %}<!DOCTYPE html>{% endblock %}
 {% block docWrap %}
 {#-# `doc` at end due to [weird IE5 mac bug](https://www.tobymackenzie.com/blog/2018/02/03/ie5-mac-class-space-bug/): any classes on `<html>` that have a space following them will match the beginning substring of any class selectors #}
-<html{% block docAttr %} class="{% block docClasses %}ua-no-js doc-{{ doc.name | default('default') }} env-{{ app.environment }}{% if doc.classes is defined %} {{doc.classes | raw}}{% endif %} doc{% endblock %}" id="doc-{{ doc.name | default('default') }}"{% if doc.attr is defined %} {{doc.attr | raw}}{% endif %}{% endblock %}>
+<html{% block docAttr %} class="{% block docClasses %}doc-{{ doc.name | default('default') }} env-{{ app.environment }}{% if doc.classes is defined %} {{doc.classes | raw}}{% endif %} doc{% endblock %}" id="doc-{{ doc.name | default('default') }}"{% if doc.attr is defined %} {{doc.attr | raw}}{% endif %}{% endblock %}>
 {%	block docHeadWrap %}
 	<head>
 {%		block docCharsetWrap %}
