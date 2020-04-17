@@ -1,5 +1,5 @@
 <?php
-namespace TJM\Bundle\BaseBundle\Controller;
+namespace TJM\Bundle\BaseBundle\Templating;
 
 use Symfony\Component\Templating\Helper\Helper as BaseHelper;
 
@@ -34,4 +34,3 @@ class Helper extends BaseHelper{
 		return $this->name;
 	}
 }
-
