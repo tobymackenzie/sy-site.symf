@@ -20,7 +20,7 @@ class ComposerCommand extends Command{
 			->addArgument('arguments', InputArgument::IS_ARRAY, 'Arguments to pass on to composer.  Note that options are not currently supported.')
 		;
 	}
-	protected function execute(InputInterface $input, OutputInterface $output){
+	protected function execute(InputInterface $input, OutputInterface $output): int{
 		$arguments = $input->getArgument('arguments');
 
 		//--determine project root
@@ -41,5 +41,6 @@ class ComposerCommand extends Command{
 		if($return !== 0){
 			throw new Exception('Composer returned an error: ' . $return);
 		}
+		return 0;
 	}
 }

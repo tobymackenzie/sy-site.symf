@@ -20,7 +20,7 @@ class SymfonyPermissionsCommand extends Command{
 			->addArgument('aclType', InputArgument::REQUIRED, 'What type of ACL mechanism to use.  One of (chmod|setfacl|none)')
 		;
 	}
-	protected function execute(InputInterface $input, OutputInterface $output){
+	protected function execute(InputInterface $input, OutputInterface $output): int{
 		$verbose = ($output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE);
 		$aclType = $input->getArgument('aclType');
 		if($aclType){
@@ -102,5 +102,6 @@ class SymfonyPermissionsCommand extends Command{
 				. " - none: doesn't have ACL support\n"
 			);
 		}
+		return 0;
 	}
 }

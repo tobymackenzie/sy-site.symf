@@ -12,7 +12,8 @@ class PHPInfoCommand extends Command{
 			->setDescription('Get information about local PHP install, AKA `phpinfo`')
 		;
 	}
-	protected function execute(InputInterface $input, OutputInterface $output){
+	protected function execute(InputInterface $input, OutputInterface $output): int{
 		phpinfo();
+		return 0;
 	}
 }

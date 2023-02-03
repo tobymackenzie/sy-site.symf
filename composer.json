@@ -13,8 +13,8 @@
   }
  }
  ,"require": {
-  "php": ">=5.5"
-  ,"symfony/framework-bundle": ">=3.3"
+  "php": ">=7"
+  ,"symfony/framework-bundle": ">=4"
  }
  ,"suggest": {
 	"symfony/asset": ""
