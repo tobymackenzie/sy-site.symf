@@ -1,5 +1,5 @@
 <?php
-namespace TJM\Bundle\BaseBundle\Command;
+namespace TJM\BaseBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;

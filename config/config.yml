@@ -4,4 +4,4 @@ imports:
 #==TJM
 tjm_base:
  page_wraps:
-  full: "@TJMBase/skeletons/full.{format}.twig"
+  full: "@TJMBase/shells/full.{format}.twig"

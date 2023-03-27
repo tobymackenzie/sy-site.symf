@@ -1,5 +1,5 @@
 <?php
-namespace TJM\Bundle\BaseBundle\DependencyInjection;
+namespace TJM\BaseBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -20,9 +20,9 @@ class TJMBaseExtension extends Extension{
 		$config = $this->processConfiguration($configuration, $configs);
 //var_dump($configs);die();
 		$pageWraps = Array(
-			"bare"=> "@TJMBase/skeletons/bare.html.twig"
-			,"simple"=> "@TJMBase/skeletons/simple.html.twig"
-			,"full"=> "@TJMBase/skeletons/full.html.twig"
+			"bare"=> "@TJMBase/shells/bare.html.twig"
+			,"simple"=> "@TJMBase/shells/simple.html.twig"
+			,"full"=> "@TJMBase/shells/full.html.twig"
 		);
 		if(array_key_exists("page_wraps", $config)){
 			$pageWraps = array_merge($pageWraps, $config["page_wraps"]);

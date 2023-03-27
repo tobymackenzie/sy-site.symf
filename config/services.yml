@@ -1,14 +1,14 @@
 parameters:
 
 services:
-  TJM\Bundle\BaseBundle\Command\ComposerCommand:
+  TJM\BaseBundle\Command\ComposerCommand:
     arguments: ['%kernel.root_dir%']
     tags:
       - {name: 'console.command'}
-  TJM\Bundle\BaseBundle\Command\PHPInfoCommand:
+  TJM\BaseBundle\Command\PHPInfoCommand:
     tags:
       - {name: 'console.command'}
-  TJM\Bundle\BaseBundle\Command\SymfonyPermissionsCommand:
+  TJM\BaseBundle\Command\SymfonyPermissionsCommand:
     arguments: ['%kernel.root_dir%']
     tags:
       - {name: 'console.command'}

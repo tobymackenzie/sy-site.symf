@@ -1,5 +1,5 @@
 <?php
-namespace TJM\Bundle\BaseBundle\Controller;
+namespace TJM\BaseBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as BaseController;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,7 +10,7 @@ class Controller extends BaseController{
 			$parameters["page"] = Array();
 		}
 		$request = (isset($parameters['request'])) ? $parameters['request'] : $this->container->get("request_stack")->getCurrentRequest();
-		if(!isset($parameters["page"]["skeleton"])){
+		if(!isset($parameters["page"]["shell"])){
 			$wraps = $this->container->getParameter('tjm_base.wraps');
 			if(!array_key_exists("wrap", $parameters["page"])){
 				if(!array_key_exists("wrap", $parameters["page"])){
@@ -24,12 +24,12 @@ class Controller extends BaseController{
 					}
 				}
 			}
-			$parameters["page"]["skeleton"] = array_key_exists($parameters["page"]["wrap"], $wraps)
+			$parameters["page"]["shell"] = array_key_exists($parameters["page"]["wrap"], $wraps)
 				? $wraps[$parameters["page"]["wrap"]]
 				: $wraps["full"]
 			;
 		}
-		$parameters['page']['skeleton'] = str_replace('{format}', $request->getRequestFormat() , $parameters['page']['skeleton']);
+		$parameters['page']['shell'] = str_replace('{format}', $request->getRequestFormat() , $parameters['page']['shell']);
 		if(!isset($parameters['doc'])){
 			$parameters['doc'] = Array();
 		}

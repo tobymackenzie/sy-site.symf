@@ -9,12 +9,12 @@
  ]
  ,"autoload": {
   "psr-4": {
-   "TJM\\Bundle\\BaseBundle\\": ""
+   "TJM\\BaseBundle\\": "src"
   }
  }
  ,"require": {
   "php": ">=7"
-  ,"symfony/framework-bundle": ">=4"
+  ,"symfony/framework-bundle": ">=5"
  }
  ,"suggest": {
 	"symfony/asset": ""

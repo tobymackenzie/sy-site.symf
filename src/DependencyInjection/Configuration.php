@@ -1,5 +1,5 @@
 <?php
-namespace TJM\Bundle\BaseBundle\DependencyInjection;
+namespace TJM\BaseBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
