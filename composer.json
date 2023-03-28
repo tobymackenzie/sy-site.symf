@@ -1,5 +1,5 @@
 {
- "name": "tjm/symfony-basebundle"
+ "name": "tjm/sy-site"
  ,"authors": [
   {
    "name": "Toby Mackenzie"
@@ -9,7 +9,7 @@
  ]
  ,"autoload": {
   "psr-4": {
-   "TJM\\BaseBundle\\": "src/"
+   "TJM\\SySite\\": "src/"
   }
  }
  ,"require": {

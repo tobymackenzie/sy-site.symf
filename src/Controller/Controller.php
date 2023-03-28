@@ -1,5 +1,5 @@
 <?php
-namespace TJM\BaseBundle\Controller;
+namespace TJM\SySite\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as BaseController;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,7 +11,7 @@ class Controller extends BaseController{
 		}
 		$request = (isset($parameters['request'])) ? $parameters['request'] : $this->container->get("request_stack")->getCurrentRequest();
 		if(!isset($parameters["page"]["shell"])){
-			$wraps = $this->container->getParameter('tjm_base.wraps');
+			$wraps = $this->container->getParameter('tjm_sy_site.wraps');
 			if(!array_key_exists("wrap", $parameters["page"])){
 				if(!array_key_exists("wrap", $parameters["page"])){
 					if(

@@ -1,5 +1,5 @@
 <?php
-namespace TJM\BaseBundle\DependencyInjection;
+namespace TJM\SySite\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -14,12 +14,12 @@ class Configuration implements ConfigurationInterface{
 	 * {@inheritDoc}
 	 */
 	public function getConfigTreeBuilder(){
-		$treeBuilder = new TreeBuilder('tjm_base');
+		$treeBuilder = new TreeBuilder('tjm_sy_site');
 		//--must set name and get root node differently in symfony < 4
 		if(method_exists($treeBuilder, 'getRootNode')){
 			$rootNode = $treeBuilder->getRootNode();
 		}else{
-			$treeBuilder->root('tjm_base');
+			$treeBuilder->root('tjm_sy_site');
 		}
 		$rootNode
 			->children()

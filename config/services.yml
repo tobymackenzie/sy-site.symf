@@ -1,6 +1,6 @@
 parameters:
 
 services:
-  TJM\BaseBundle\Command\PHPInfoCommand:
+  TJM\SySite\Command\PHPInfoCommand:
     tags:
       - {name: 'console.command'}
