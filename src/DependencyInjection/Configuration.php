@@ -13,7 +13,7 @@ class Configuration implements ConfigurationInterface{
 	/**
 	 * {@inheritDoc}
 	 */
-	public function getConfigTreeBuilder(){
+	public function getConfigTreeBuilder(): TreeBuilder{
 		$treeBuilder = new TreeBuilder('tjm_sy_site');
 		//--must set name and get root node differently in symfony < 4
 		if(method_exists($treeBuilder, 'getRootNode')){
