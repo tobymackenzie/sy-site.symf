@@ -2,16 +2,35 @@
 namespace TJM\SySite\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as BaseController;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Twig\Environment as Twig_Environment;
 
 class Controller extends BaseController{
+	protected ?RequestStack $requestStack = null;
+	protected ?Twig_Environment $twig = null;
+	protected array $viewWraps = [
+		'full'=> '@TJMSySite/shells/full.{format}.twig',
+	];
+	public function __construct(
+		?RequestStack $requestStack = null,
+		?Twig_Environment $twig = null,
+		?array $viewWraps = null
+	){
+		$this->requestStack = $requestStack;
+		$this->twig = $twig;
+		if($viewWraps){
+			$this->viewWraps = array_merge($this->viewWraps, $viewWraps);
+		}
+	}
+
 	protected function getGlobalRenderData(array $parameters = Array()){
 		if(!array_key_exists("page", $parameters)){
 			$parameters["page"] = Array();
 		}
-		$request = (isset($parameters['request'])) ? $parameters['request'] : $this->container->get("request_stack")->getCurrentRequest();
+		$request = $parameters['request'] ?? ($this->requestStack ?? $this->container->get('request_stack'))->getCurrentRequest();
 		if(!isset($parameters["page"]["shell"])){
-			$wraps = $this->container->getParameter('tjm_sy_site.wraps');
+			$wraps = $this->viewWraps ?? $this->container->getParameter('tjm_sy_site.wraps');
 			if(!array_key_exists("wrap", $parameters["page"])){
 				if(!array_key_exists("wrap", $parameters["page"])){
 					if(
