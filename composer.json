@@ -12,7 +12,7 @@
    "TJM\\SySite\\": "src/"
   }
  }
- ,"license": "BSD-3-Clause"
+ ,"license": "0BSD"
  ,"require": {
   "php": ">=7"
   ,"symfony/framework-bundle": ">=5"
