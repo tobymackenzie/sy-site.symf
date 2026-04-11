@@ -1,7 +1,6 @@
 {% block doctype %}<!DOCTYPE html>{% endblock %}
 {% block docWrap %}
-{#-# `doc` at end due to [weird IE5 mac bug](https://www.tobymackenzie.com/blog/2018/02/03/ie5-mac-class-space-bug/): any classes on `<html>` that have a space following them will match the beginning substring of any class selectors #}
-<html{% block docAttr %} class="{% block docClasses %}doc-{{ doc.name | default('default') }} env-{{ app.environment }}{% if doc.classes is defined %} {{doc.classes | raw}}{% endif %} doc{% endblock %}" id="doc-{{ doc.name | default('default') }}"{% if doc.attr is defined %} {{doc.attr | raw}}{% endif %}{% endblock %}>
+<html{% block docAttr %} class="{% block docClasses %}doc-{{ doc.name | default('default') }}{% if doc.classes is defined %} {{doc.classes | raw}}{% endif %}{% endblock %}"{% if doc.attr is defined %} {{doc.attr | raw}}{% endif %}{% endblock %}>
 {%	block docHeadWrap %}
 	<head>
 {%		block docCharsetWrap %}
@@ -11,18 +10,20 @@
 		<title>{% block docTitle %}{% if doc.title is defined %}{{doc.title}} - {% endif %}{{ site.title | default('Site') }}{% endblock %}</title>
 {%		endblock %}
 {%		block docMeta %}
-		{% if doc.description is defined %}<meta content="{{doc.description}}" name="description" />{% endif %}
-		{% if doc.keywords is defined %}<meta content="{{doc.keywords}}" name="keywords" />{% endif %}
-		{% if site.isResponsive is defined %}<meta content="initial-scale=1,width=device-width" name="viewport" />{% endif %}
+		{% if doc.description is defined %}<meta name="description" content="{{doc.description}}" />{% endif %}
+		{% if doc.keywords is defined %}<meta name="keywords" content="{{doc.keywords}}" />{% endif %}
+		{% if site.isResponsive is defined %}<meta name="viewport" content="initial-scale=1,width=device-width" />{% endif %}
 {%		endblock %}
 {%		block docStyles %}{% endblock %}
 {%		block docPreScripts %}{% endblock %}
 	</head>
 {%	endblock %}
 {%	block docBodyWrap %}
-	<body id="body">
+	<body>
 {%		block docBody %}{% endblock %}
-{%		block docPostScripts %}{% endblock %}
+{%		block docPostScripts %}
+{% if app.environment == 'dev' %}<s id="TJMDEV" hidden=""></s>{% endif %}
+{%		endblock %}
 	</body>
 {%	endblock %}
 </html>
