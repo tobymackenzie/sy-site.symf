@@ -1,7 +1,7 @@
 imports:
- - { resource: services.yml }
+  - { resource: services.yml }
 
 #==TJM
 tjm_sy_site:
- page_wraps:
-  full: "@TJMSySite/shells/full.{format}.twig"
+  page_wraps:
+    full: "@TJMSySite/shells/full.{format}.twig"

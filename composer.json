@@ -1,25 +1,25 @@
 {
- "name": "tjm/sy-site"
- ,"authors": [
-  {
-   "name": "Toby Mackenzie"
-   ,"email": "public@tobymackenzie.com"
-   ,"homepage": "http://www.tobymackenzie.com"
-  }
- ]
- ,"autoload": {
-  "psr-4": {
-   "TJM\\SySite\\": "src/"
-  }
- }
- ,"license": "0BSD"
- ,"require": {
-  "php": ">=7"
-  ,"symfony/framework-bundle": ">=5"
- }
- ,"suggest": {
-	"symfony/asset": ""
-	,"symfony/console": ""
-	,"twig/twig": ""
- }
+	"name": "tjm/sy-site"
+	,"authors": [
+		{
+			"name": "Toby Mackenzie"
+			,"email": "public@tobymackenzie.com"
+			,"homepage": "http://www.tobymackenzie.com"
+		}
+	]
+	,"autoload": {
+		"psr-4": {
+			"TJM\\SySite\\": "src/"
+		}
+	}
+	,"license": "0BSD"
+	,"require": {
+		"php": ">=7"
+		,"symfony/framework-bundle": ">=5"
+	}
+	,"suggest": {
+		"symfony/asset": ""
+		,"symfony/console": ""
+		,"twig/twig": ""
+	}
 }
